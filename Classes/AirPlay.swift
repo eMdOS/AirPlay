@@ -19,7 +19,7 @@ public final class AirPlay: NSObject {
     private let volumeView: MPVolumeView!
     private var airplayButton: UIButton?
     /// Returns true | false if there are or not available devices for casting via AirPlay.
-    private (set) var isAvailable = false
+    public private (set) var isAvailable = false
     
     // MARK: Singleton
     /// Singleton
