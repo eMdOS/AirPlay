@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.summary = "irPlay lets users track iOS AirPlay availability."
   s.requires_arc = true
  
-  s.version = "0.1.0"
+  s.version = "0.1.1"
  
   s.license = { :type => "MIT", :file => "LICENSE" }
  

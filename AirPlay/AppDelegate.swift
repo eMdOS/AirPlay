@@ -13,13 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        if let _window = window {
-            AirPlay.sharedInstance.startMonitoring(_window)
+        if let window = window {
+            AirPlay.sharedInstance.startMonitoring(window)
         }
-        
         return true
     }
 
