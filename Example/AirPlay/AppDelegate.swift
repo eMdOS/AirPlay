@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AirPlay
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        if let window = window {
+            AirPlay.sharedInstance.startMonitoring(window)
+        }
         return true
     }
 
