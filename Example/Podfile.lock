@@ -1,0 +1,14 @@
+PODS:
+  - AirPlay (0.1.0)
+
+DEPENDENCIES:
+  - AirPlay (from `../`)
+
+EXTERNAL SOURCES:
+  AirPlay:
+    :path: ../
+
+SPEC CHECKSUMS:
+  AirPlay: c9e16735f168551a105afbecb3cab35461368ecb
+
+COCOAPODS: 0.39.0
