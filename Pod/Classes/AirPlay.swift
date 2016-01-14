@@ -9,7 +9,7 @@
 import Foundation
 import MediaPlayer
 
-/// Notification sent with the status updates for AirPlay availability.
+/// Notification sent everytime AirPlay availability changes.
 public let AirPlayAvailabilityChangedNotification = "AirPlayAvailabilityChangedNotification"
 
 final public class AirPlay: NSObject {
@@ -18,10 +18,12 @@ final public class AirPlay: NSObject {
     
     private let volumeView: MPVolumeView!
     private var airplayButton: UIButton?
+    
     /// Returns true | false if there are or not available devices for casting via AirPlay.
-    final public private (set) var isPossible = false
+    private var isPossible = false
     
     // MARK: Singleton
+    
     /// Singleton
     public static let sharedInstance = AirPlay()
     /// Private Initializer (because of Singleton pattern)
@@ -32,7 +34,10 @@ final public class AirPlay: NSObject {
     }
     
     // MARK: Methods
+    
     /**
+    Starts monitoring AirPlay availability changes.
+    
     AirPlay button needs to be visible to be able to check its availability. So, is needed a Window. As suggestion, please use `AppDelegate` window.
     
     - parameter window: Windows which will be tracking AirPlay availability.
@@ -48,7 +53,7 @@ final public class AirPlay: NSObject {
     }
     
     /**
-     Removes the observer of AirPlay availability.
+     Stops monitoring AirPlay availability changes.
      */
     final public func stopMonitoring() {
         airplayButton?.removeObserver(self, forKeyPath: AirPlayKVOButtonAlphaKey)
@@ -75,11 +80,28 @@ extension AirPlay {
         
         if isPossible != newAvailabilityStatus {
             isPossible = newAvailabilityStatus
-            dispatch_async(dispatch_get_main_queue()) {
-                NSNotificationCenter.defaultCenter().postNotificationName(AirPlayAvailabilityChangedNotification, object: self)
-            }
+            postAvailabilityChangeNotification()
         }
         
         isPossible = newAvailabilityStatus
+    }
+}
+
+// MARK:- Notifications
+
+extension AirPlay {
+    private func postAvailabilityChangeNotification() {
+        dispatch_async(dispatch_get_main_queue()) {
+            NSNotificationCenter.defaultCenter().postNotificationName(AirPlayAvailabilityChangedNotification, object: self)
+        }
+    }
+}
+
+// MARK:- Availability
+
+extension AirPlay {
+    /// Returns `true` or `false` if there are or not available devices for casting via AirPlay.
+    final public class var isPossible: Bool {
+        return AirPlay.sharedInstance.isPossible
     }
 }

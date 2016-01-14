@@ -11,15 +11,12 @@ import AirPlay
 
 class ViewController: UIViewController {
     
-    private let airplay = AirPlay.sharedInstance
-    
     @IBOutlet private weak var airplayStatus: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let isAirPlayPossible = airplay.isPossible ? "Possible" : "Not Possible"
-        airplayStatus.text = isAirPlayPossible
+        airplayStatus.text = AirPlay.isPossible ? "Possible" : "Not Possible"
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -41,7 +38,6 @@ class ViewController: UIViewController {
 
 extension ViewController: AirPlayCastable {
     func airplayDidChangeAvailability(notification: NSNotification) {
-        let isAirPlayPossible = AirPlay.sharedInstance.isPossible ? "Possible" : "Not Possible"
-        airplayStatus.text = isAirPlayPossible
+        airplayStatus.text = AirPlay.isPossible ? "Possible" : "Not Possible"
     }
 }
