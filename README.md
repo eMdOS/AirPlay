@@ -9,6 +9,10 @@ AirPlay lets users track iOS AirPlay availability.
 
 ## Requirements
 
++ Xcode 7+
++ iOS 8+
++ CocoaPods 0.39.0
+
 ![XcodeVersion](https://img.shields.io/badge/Xcode-v7.2-0b8bf7.svg)
 ![Swift](https://img.shields.io/badge/Swift-2.1-fd9e39.svg)
 ![CocoaPods](https://img.shields.io/badge/CocoaPods-0.39.0-e74c3c.svg)
