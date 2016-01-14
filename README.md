@@ -27,9 +27,19 @@ Currently, this library is a kind of workaround to be able to track **AirPlay av
 
 ## Usage
 
+### Notifications, Properties, Methods
+
+Notification / Property / Method | Description |
+--- | --- |
+`AirPlayAvailabilityChangedNotification` | Notification sent everytime AirPlay availability changes. |
+`isPossible` | Returns `true` or `false` if there are or not available devices for casting via AirPlay. |
+`startMonitoring(_:)` | Starts monitoring AirPlay availability changes |
+`stopMonitoring()` | Stops monitoring AirPlay availability changes |
+
+
 ### Start Monitoring
 
-What I use to do is to start monitoring in the `AppDelegate`.
+What I use to do is to start monitoring in the `AppDelegate`. It can be implemented on a `UIViewController` also, just passing a `UIWindow` object.
 
 ```swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -59,9 +69,51 @@ NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: AirPlayAva
 
 `AirPlay.sharedInstance.isPossible` will return `true` or `false`.
 
-### Example
+### Example using Protocol Extensions and Constraints
 
-Just take a look at [Example using Protocol Extension and Constraint](https://github.com/eMdOS/AirPlay/wiki/Usage-Example#using-protocol-extension-and-constraint).
+Assuming we have a class called `Player` which extends from `UIViewController`.
+
+`AirPlayCastable` protocol:
+
+```swift
+protocol AirPlayCastable: class {
+    func airplayDidChangeAvailability(notification: NSNotification)
+}
+```
+
+`AirPlayCastable` extension and constraint:
+
+```swift
+extension AirPlayCastable where Self: Player {
+    func registerForAirPlayAvailabilityChanges() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "airplayDidChangeAvailability:", name: AirPlayAvailabilityChangedNotification, object: nil)
+    }
+
+    func unregisterForAirPlayAvailabilityChanges() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: AirPlayAvailabilityChangedNotification)
+    }
+}
+```
+
+Then, in `Player` class...
+
+**Registering:**
+
+```swift
+override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    registerForAirPlayAvailabilityChanges()
+}
+```
+
+**Unregistering:**
+
+```swift
+override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    unregisterForAirPlayAvailabilityChanges()
+}
+```
 
 ## Installation
 
