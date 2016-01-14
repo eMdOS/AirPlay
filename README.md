@@ -67,7 +67,7 @@ NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: AirPlayAva
 
 ### Fetching `AirPlay` availability status
 
-`AirPlay.sharedInstance.isPossible` will return `true` or `false`.
+`AirPlay.isPossible` will return `true` or `false`.
 
 ### Example using Protocol Extensions and Constraints
 
@@ -112,6 +112,17 @@ override func viewWillAppear(animated: Bool) {
 override func viewWillDisappear(animated: Bool) {
     super.viewWillDisappear(animated)
     unregisterForAirPlayAvailabilityChanges()
+}
+```
+
+**Listening:**
+
+```swift
+extension Player: AirPlayCastable {
+    func airplayDidChangeAvailability(notification: NSNotification) {
+        // Where 'airplayStatus' is a UILabel
+        airplayStatus.text = AirPlay.isPossible ? "Possible" : "Not Possible"
+    }
 }
 ```
 
