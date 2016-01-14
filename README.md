@@ -121,7 +121,7 @@ AirPlay is available through [CocoaPods](http://cocoapods.org). To install it, s
 
 ## Author
 
-eMdOS, emilio.ojeda.mendoza@gmail.com
+[eMdOS](https://twitter.com/_eMdOS_)
 
 ## License
 
