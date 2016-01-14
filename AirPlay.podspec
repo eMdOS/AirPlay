@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name             = "AirPlay"
-  s.version          = "1.0.2"
+  s.version          = "1.1.0"
   s.summary          = "AirPlay lets users track iOS AirPlay availability."
 
   s.homepage         = "https://github.com/eMdOS/AirPlay"
