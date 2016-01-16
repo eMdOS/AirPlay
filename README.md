@@ -32,21 +32,22 @@ Currently, this library is a kind of workaround to be able to track **AirPlay av
 Notification / Property / Method | Description |
 --- | --- |
 `AirPlayAvailabilityChangedNotification` | Notification sent everytime AirPlay availability changes. |
-`isPossible` | Returns `true` or `false` if there are or not available devices for casting via AirPlay. |
-`startMonitoring(_:)` | Starts monitoring AirPlay availability changes |
+`isPossible` | Returns `true` or `false` if there are or not available devices for casting via AirPlay. (read-only) |
+`isBeingMonitored` | Returns `true` or `false` if AirPlay availability is being monitored or not. (read-only) |
+`startMonitoring()` | Starts monitoring AirPlay availability changes |
 `stopMonitoring()` | Stops monitoring AirPlay availability changes |
 
 
 ### Start Monitoring
 
-What I use to do is to start monitoring in the `AppDelegate`. It can be implemented on a `UIViewController` also, just passing a `UIWindow` object.
+What I use to do is to start monitoring in the `AppDelegate`. It can be implemented anywhere.
 
 ```swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
-    if let window = window {
-        AirPlay.sharedInstance.startMonitoring(window)
-    }
+
+    AirPlay.startMonitoring()
+
     return true
 }
 ```
