@@ -63,7 +63,7 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: "<selector>", n
 To remove them:
 
 ```swift
-NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: AirPlayAvailabilityChangedNotification)
+NSNotificationCenter.defaultCenter().removeObserver(self, name: AirPlayAvailabilityChangedNotification, object: nil)
 ```
 
 ### Fetching `AirPlay` availability status
@@ -91,7 +91,7 @@ extension AirPlayCastable where Self: Player {
     }
 
     func unregisterForAirPlayAvailabilityChanges() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: AirPlayAvailabilityChangedNotification)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: AirPlayAvailabilityChangedNotification, object: nil)
     }
 }
 ```
