@@ -19,6 +19,6 @@ extension AirPlayCastable where Self: UIViewController {
     }
     
     func unregisterForAirPlayAvailabilityChanges() {
-        NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: AirPlayAvailabilityChangedNotification)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: AirPlayAvailabilityChangedNotification, object: nil)
     }
 }
