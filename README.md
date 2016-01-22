@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/AirPlay.svg?style=flat)](http://cocoapods.org/pods/AirPlay)
 [![Platform](https://img.shields.io/cocoapods/p/AirPlay.svg?style=flat)](http://cocoapods.org/pods/AirPlay)
 
-AirPlay lets users track iOS AirPlay availability.
+AirPlay lets users track iOS AirPlay availability and provides extra information about AirPlay connections.
 
 ## Requirements
 
@@ -32,8 +32,11 @@ Currently, this library is a kind of workaround to be able to track **AirPlay av
 Notification / Property / Method | Description |
 --- | --- |
 `AirPlayAvailabilityChangedNotification` | Notification sent everytime AirPlay availability changes. |
+`AirPlayRouteStatusChangedNotification` | Notification sent everytime AirPlay connection route changes. |
 `isPossible` | Returns `true` or `false` if there are or not available devices for casting via AirPlay. (read-only) |
 `isBeingMonitored` | Returns `true` or `false` if AirPlay availability is being monitored or not. (read-only) |
+`isConnected` | Returns `true` or `false` if device is connected or not to a second device via AirPlay. (read-only) |
+`connectedDevice` | Returns Device's name if connected, if not, it returns `nil`. (read-only) |
 `startMonitoring()` | Starts monitoring AirPlay availability changes |
 `stopMonitoring()` | Stops monitoring AirPlay availability changes |
 
@@ -58,17 +61,27 @@ To add them:
 
 ```swift
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "<selector>", name: AirPlayAvailabilityChangedNotification, object: nil)
+NSNotificationCenter.defaultCenter().addObserver(self, selector: "<selector>", name: AirPlayRouteStatusChangedNotification, object: nil)
 ```
 
 To remove them:
 
 ```swift
 NSNotificationCenter.defaultCenter().removeObserver(self, name: AirPlayAvailabilityChangedNotification, object: nil)
+NSNotificationCenter.defaultCenter().removeObserver(self, name: AirPlayRouteStatusChangedNotification, object: nil)
 ```
 
-### Fetching `AirPlay` availability status
+### Displaying `AirPlay` availability status
 
 `AirPlay.isPossible` will return `true` or `false`.
+
+### Displaying `AirPlay` connection status
+
+`AirPlay.isConnected` will return `true` of `false`.
+
+### Displaying connected device name
+
+`AirPlay.connectedDevice ?? "Unknown Device"`
 
 ### Example using Protocol Extensions and Constraints
 
@@ -79,6 +92,7 @@ Assuming we have a class called `Player` which extends from `UIViewController`.
 ```swift
 protocol AirPlayCastable: class {
     func airplayDidChangeAvailability(notification: NSNotification)
+    func airplayCurrentRouteDidChange(notification: NSNotification)
 }
 ```
 
@@ -90,8 +104,16 @@ extension AirPlayCastable where Self: Player {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "airplayDidChangeAvailability:", name: AirPlayAvailabilityChangedNotification, object: nil)
     }
 
+    func registerForAirPlayRouteChanges() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "airplayCurrentRouteDidChange:", name: AirPlayRouteStatusChangedNotification, object: nil)
+    }
+
     func unregisterForAirPlayAvailabilityChanges() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: AirPlayAvailabilityChangedNotification, object: nil)
+    }
+
+    func unregisterForAirPlayRouteChanges() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: AirPlayRouteStatusChangedNotification, object: nil)
     }
 }
 ```
@@ -101,18 +123,33 @@ Then, in `Player` class...
 **Registering:**
 
 ```swift
-override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
+override func viewDidLoad() {
+    super.viewDidLoad()
     registerForAirPlayAvailabilityChanges()
+    registerForAirPlayRouteChanges()
 }
 ```
 
 **Unregistering:**
 
 ```swift
-override func viewWillDisappear(animated: Bool) {
-    super.viewWillDisappear(animated)
+deinit {
     unregisterForAirPlayAvailabilityChanges()
+    unregisterForAirPlayRouteChanges()
+}
+```
+
+**Updating UI:**
+
+```swift
+private func updateUI() {
+    airplayStatus.text = AirPlay.isPossible ? "Possible" : "Not Possible"
+    if AirPlay.isConnected {
+        let device = AirPlay.connectedDevice ?? "Unknown Device"
+        airplayConnectionStatus.text = "Connected to: \(device)"
+    } else {
+        airplayConnectionStatus.text = "Not Connected"
+    }
 }
 ```
 
@@ -121,8 +158,11 @@ override func viewWillDisappear(animated: Bool) {
 ```swift
 extension Player: AirPlayCastable {
     func airplayDidChangeAvailability(notification: NSNotification) {
-        // Where 'airplayStatus' is a UILabel
-        airplayStatus.text = AirPlay.isPossible ? "Possible" : "Not Possible"
+        updateUI()
+    }
+
+    func airplayCurrentRouteDidChange(notification: NSNotification) {
+        updateUI()
     }
 }
 ```

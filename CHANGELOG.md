@@ -5,11 +5,23 @@ All notable changes to this project will be documented in this file.
 
 ## Unreleased
 
+### To Add
+
+- AirPlay image assets with the proper dimensions (@1x, @2x, @3x).
+
+- AirPlayButton (UIButton or UIView subclass [not defined yet]).
+
+## [v1.3.0](https://github.com/eMdOS/AirPlay/tree/v1.3.0)
+
+(2016-01-22)
+
 ### Added
 
-- Detection of AirPlay casting/streaming state (active/inactive)
+- `AirPlayRouteStatusChangedNotification` to observ AirPlay connection route changes.
 
-	It could be defined as `+ isActive: Bool` and used as `AirPlay.isActive`
+- `isConnected` class property. Returns `true` or `false` if device is connected or not to a second device via AirPlay. (read-only)
+
+- `connectedDevice` class property. Returns Device's name (as `String`) if connected, if not, it returns `nil`. (read-only)
 
 ## [v1.2.1](https://github.com/eMdOS/AirPlay/tree/v1.2.1)
 
