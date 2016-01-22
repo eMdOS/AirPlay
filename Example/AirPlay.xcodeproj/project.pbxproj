@@ -15,6 +15,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		7AF93B1CA475C09ED25F9151 /* Pods_AirPlay_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01025BA83E035857F2CE9E9A /* Pods_AirPlay_Example.framework */; };
+		AF03AB001C52EFA0006737ED /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = AF03AAFF1C52EFA0006737ED /* CHANGELOG.md */; };
 		AF052F2B1C46A673007767F8 /* AirPlayCastable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF052F2A1C46A673007767F8 /* AirPlayCastable.swift */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		853CAAA659884135AA2BA6D8 /* Pods-AirPlay_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirPlay_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirPlay_Example/Pods-AirPlay_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		88091601401406EA18F954F9 /* Pods-AirPlay_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirPlay_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AirPlay_Tests/Pods-AirPlay_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		A40A95B4EC7CBFE83285E750 /* Pods-AirPlay_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AirPlay_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AirPlay_Tests/Pods-AirPlay_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		AF03AAFF1C52EFA0006737ED /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		AF052F2A1C46A673007767F8 /* AirPlayCastable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirPlayCastable.swift; sourceTree = "<group>"; };
 		C9C8B3FC6E93556BD8C12F51 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		D1BD23CF78F8406BD333EC77 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			children = (
 				6A766F01083CBA8D663B0A45 /* AirPlay.podspec */,
 				D1BD23CF78F8406BD333EC77 /* README.md */,
+				AF03AAFF1C52EFA0006737ED /* CHANGELOG.md */,
 				C9C8B3FC6E93556BD8C12F51 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
@@ -365,6 +368,7 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				AF052F2B1C46A673007767F8 /* AirPlayCastable.swift in Sources */,
+				AF03AB001C52EFA0006737ED /* CHANGELOG.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

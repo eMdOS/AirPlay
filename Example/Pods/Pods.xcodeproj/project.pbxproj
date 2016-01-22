@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0342A70765D0458DFCE4D2C3173EDB73 /* AirPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421CF87663EF26F5C87FEC6F174A10F6 /* AirPlay.swift */; };
 		0629EF9DE45CF4B5F3972C91E29E0909 /* Pods-AirPlay_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B1E32709D106786483C6D1AA466539D8 /* Pods-AirPlay_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		15EB8324C08706AE044A9EC2BA535D43 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84F0F342E8DE87E40374869588A24CD9 /* MediaPlayer.framework */; };
-		19B48BB954FD95BD3A590D1D5A88F913 /* AirPlay-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB9A75E2D84CBAB0A5652587A1BDDB /* AirPlay-dummy.m */; };
-		25FE63E65D8EAB10825E185B4D76265A /* AirPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421CF87663EF26F5C87FEC6F174A10F6 /* AirPlay.swift */; };
-		3343695A20907C0FF4100EEA46120B37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03222082EB57058823FFC8CC2A5BA19E /* Foundation.framework */; };
-		335772275490E3F97F5E13B5A6CA9927 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03222082EB57058823FFC8CC2A5BA19E /* Foundation.framework */; };
+		3343695A20907C0FF4100EEA46120B37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725E26D5DB175379A622285C024A4393 /* Foundation.framework */; };
 		349B705694E967688327C32367116961 /* Pods-AirPlay_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA8E4A30DB4DDEA44937AFE4F3BD4B0 /* Pods-AirPlay_Tests-dummy.m */; };
 		393A5386E9C2B0EEAE356F4CFBE038D1 /* Pods-AirPlay_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 796A0F368F580BC88D981E21B0E311E6 /* Pods-AirPlay_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9E02C7D1413354B98DAD843AD728EDA0 /* AirPlay-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FDAAC00849149E55DDF388100F564C6 /* AirPlay-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		68BF8A90E9B786D2A8D8198CFEC84F8C /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FD593837FF556BAA3FDED076181552B /* AVFoundation.framework */; };
+		A437AF7BDE48983A7F4A656C03559CC9 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4BAC00A16FC5D03F3DF0E27891CD050 /* MediaPlayer.framework */; };
 		D3C71926ABBE9F00406C90A0F64432E7 /* Pods-AirPlay_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D478FFF3D74E6E1B063940A1E10523A8 /* Pods-AirPlay_Example-dummy.m */; };
-		FD2B64E4BD6DAE71799DFA51D3038A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03222082EB57058823FFC8CC2A5BA19E /* Foundation.framework */; };
+		E3E389C733A63AB95945162F888B12E6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725E26D5DB175379A622285C024A4393 /* Foundation.framework */; };
+		EB15629F36D74CAF9ED5DB6CBC7FD54C /* AirPlay-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ACB9A75E2D84CBAB0A5652587A1BDDB /* AirPlay-dummy.m */; };
+		F4D917D1E1F33DBDF11FE310C5DD6028 /* AirPlay-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2FDAAC00849149E55DDF388100F564C6 /* AirPlay-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FD2B64E4BD6DAE71799DFA51D3038A04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725E26D5DB175379A622285C024A4393 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,20 +26,19 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D21955E4F74E7A67B26CE653EAE2CDB3;
+			remoteGlobalIDString = 004BF0A9ADB2D7A42BE11B54C309CCD3;
 			remoteInfo = AirPlay;
 		};
 		B980803B1AC35844BBDD9C3DCAF956D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D21955E4F74E7A67B26CE653EAE2CDB3;
+			remoteGlobalIDString = 004BF0A9ADB2D7A42BE11B54C309CCD3;
 			remoteInfo = AirPlay;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03222082EB57058823FFC8CC2A5BA19E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		07E7BF5BEB2ADA2C97A0F07576416E57 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ACB9A75E2D84CBAB0A5652587A1BDDB /* AirPlay-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AirPlay-dummy.m"; sourceTree = "<group>"; };
 		0F6CF9C59874BC9E8575FF18E39527A4 /* AirPlay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AirPlay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,15 +51,17 @@
 		5ADC56684D304B016065CBEFA457C9C0 /* Pods_AirPlay_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AirPlay_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6479529412CF970A88A9F6F5176F06AC /* Pods-AirPlay_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AirPlay_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		6EEC05FC98555EC3B71D591658A4D64C /* Pods-AirPlay_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AirPlay_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		725E26D5DB175379A622285C024A4393 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		750B29439681229A89A8715471258D52 /* Pods-AirPlay_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-AirPlay_Tests.modulemap"; sourceTree = "<group>"; };
 		796A0F368F580BC88D981E21B0E311E6 /* Pods-AirPlay_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AirPlay_Tests-umbrella.h"; sourceTree = "<group>"; };
 		80E63D1CBCD6A8AE0CC67609FA030BB1 /* Pods-AirPlay_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AirPlay_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		84F0F342E8DE87E40374869588A24CD9 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
+		8FD593837FF556BAA3FDED076181552B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		9AF3A896F09F90A381A0A3188802D155 /* Pods-AirPlay_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AirPlay_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		9D5F73D74091F1A9C4C71D6D2EE39FD9 /* Pods-AirPlay_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AirPlay_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		A4623D4383597932667252443D414DF7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B10BC8FC86A1292E5E781BBE23A6E9B1 /* Pods-AirPlay_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AirPlay_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E32709D106786483C6D1AA466539D8 /* Pods-AirPlay_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AirPlay_Example-umbrella.h"; sourceTree = "<group>"; };
+		B4BAC00A16FC5D03F3DF0E27891CD050 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/MediaPlayer.framework; sourceTree = DEVELOPER_DIR; };
 		B9A2A9E0C9577CD929B13D0855C5648E /* AirPlay-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AirPlay-prefix.pch"; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D478FFF3D74E6E1B063940A1E10523A8 /* Pods-AirPlay_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AirPlay_Example-dummy.m"; sourceTree = "<group>"; };
@@ -90,12 +92,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DBA9FA629818789646719AE297502394 /* Frameworks */ = {
+		86F55ABF3C04ECAADF92EED54FF1C0BB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				335772275490E3F97F5E13B5A6CA9927 /* Foundation.framework in Frameworks */,
-				15EB8324C08706AE044A9EC2BA535D43 /* MediaPlayer.framework in Frameworks */,
+				68BF8A90E9B786D2A8D8198CFEC84F8C /* AVFoundation.framework in Frameworks */,
+				E3E389C733A63AB95945162F888B12E6 /* Foundation.framework in Frameworks */,
+				A437AF7BDE48983A7F4A656C03559CC9 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,10 +119,10 @@
 			path = "Example/Pods/Target Support Files/AirPlay";
 			sourceTree = "<group>";
 		};
-		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C35FD135B7D23E9E2392EF05E2044ACB /* iOS */,
+				FD3B48CA4E3EC9F8EE53514B10808E7F /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -166,7 +169,7 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				58F932FFFF8B9C3870566BEB03763C9F /* Development Pods */,
-				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
 				497CC29DA8154837E169BE4D0E187442 /* Products */,
 				63AC45D877405D76E9F076BDE0C0A0A5 /* Targets Support Files */,
 			);
@@ -216,15 +219,6 @@
 			path = "Target Support Files/Pods-AirPlay_Tests";
 			sourceTree = "<group>";
 		};
-		C35FD135B7D23E9E2392EF05E2044ACB /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				03222082EB57058823FFC8CC2A5BA19E /* Foundation.framework */,
-				84F0F342E8DE87E40374869588A24CD9 /* MediaPlayer.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
 		F36E15DE303BD94867F0370057207437 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,14 +227,24 @@
 			path = Pod;
 			sourceTree = "<group>";
 		};
+		FD3B48CA4E3EC9F8EE53514B10808E7F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				8FD593837FF556BAA3FDED076181552B /* AVFoundation.framework */,
+				725E26D5DB175379A622285C024A4393 /* Foundation.framework */,
+				B4BAC00A16FC5D03F3DF0E27891CD050 /* MediaPlayer.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		0C51D25DEB9EAA8F722812DE0D93FD84 /* Headers */ = {
+		6F3B05AE842133E13F4DCEAEDC512394 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E02C7D1413354B98DAD843AD728EDA0 /* AirPlay-umbrella.h in Headers */,
+				F4D917D1E1F33DBDF11FE310C5DD6028 /* AirPlay-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +267,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		004BF0A9ADB2D7A42BE11B54C309CCD3 /* AirPlay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93C825C8A6CD314A1003801A0C30D0E5 /* Build configuration list for PBXNativeTarget "AirPlay" */;
+			buildPhases = (
+				E67AE008F01A74D72E0E7D7584EE3BC7 /* Sources */,
+				86F55ABF3C04ECAADF92EED54FF1C0BB /* Frameworks */,
+				6F3B05AE842133E13F4DCEAEDC512394 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AirPlay;
+			productName = AirPlay;
+			productReference = 0F6CF9C59874BC9E8575FF18E39527A4 /* AirPlay.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		895035C97305472A8F55533671013962 /* Pods-AirPlay_Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1851D4C4191F870E84561ECFC04D9BC1 /* Build configuration list for PBXNativeTarget "Pods-AirPlay_Tests" */;
@@ -299,23 +320,6 @@
 			productReference = 1DA8D1715F39DCFC447837A73752131B /* Pods_AirPlay_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D21955E4F74E7A67B26CE653EAE2CDB3 /* AirPlay */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8C430251F59F5125A376DA6FE838EF7D /* Build configuration list for PBXNativeTarget "AirPlay" */;
-			buildPhases = (
-				3E5AB7644E51766FE12A78F699D1D53D /* Sources */,
-				DBA9FA629818789646719AE297502394 /* Frameworks */,
-				0C51D25DEB9EAA8F722812DE0D93FD84 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = AirPlay;
-			productName = AirPlay;
-			productReference = 0F6CF9C59874BC9E8575FF18E39527A4 /* AirPlay.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -337,7 +341,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D21955E4F74E7A67B26CE653EAE2CDB3 /* AirPlay */,
+				004BF0A9ADB2D7A42BE11B54C309CCD3 /* AirPlay */,
 				A579719AF49B371691B4D49E083218FB /* Pods-AirPlay_Example */,
 				895035C97305472A8F55533671013962 /* Pods-AirPlay_Tests */,
 			);
@@ -345,15 +349,6 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		3E5AB7644E51766FE12A78F699D1D53D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				19B48BB954FD95BD3A590D1D5A88F913 /* AirPlay-dummy.m in Sources */,
-				25FE63E65D8EAB10825E185B4D76265A /* AirPlay.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		44325B6DCD8A285E9A6A2549D0E6B081 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -370,24 +365,61 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E67AE008F01A74D72E0E7D7584EE3BC7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB15629F36D74CAF9ED5DB6CBC7FD54C /* AirPlay-dummy.m in Sources */,
+				0342A70765D0458DFCE4D2C3173EDB73 /* AirPlay.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		5A3F827527B834F031D1E5F57CAC4C0E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AirPlay;
-			target = D21955E4F74E7A67B26CE653EAE2CDB3 /* AirPlay */;
+			target = 004BF0A9ADB2D7A42BE11B54C309CCD3 /* AirPlay */;
 			targetProxy = B980803B1AC35844BBDD9C3DCAF956D4 /* PBXContainerItemProxy */;
 		};
 		D0D54E1F7231847D2A05C34BAA75C0C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = AirPlay;
-			target = D21955E4F74E7A67B26CE653EAE2CDB3 /* AirPlay */;
+			target = 004BF0A9ADB2D7A42BE11B54C309CCD3 /* AirPlay */;
 			targetProxy = 12EEC41C1E76CD570ED8D573FEEC13BB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		120F5F590575C5E1644FF04342AC2D4D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F888D59E20FF1BE293DD30CD0A5E2441 /* AirPlay.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AirPlay/AirPlay-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AirPlay/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AirPlay/AirPlay.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = AirPlay;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		18918EDE372F970135D61C38E56EF641 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 80E63D1CBCD6A8AE0CC67609FA030BB1 /* Pods-AirPlay_Tests.debug.xcconfig */;
@@ -449,61 +481,6 @@
 			};
 			name = Release;
 		};
-		342A42B349361F78EF61AB825386A0D4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F888D59E20FF1BE293DD30CD0A5E2441 /* AirPlay.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AirPlay/AirPlay-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AirPlay/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AirPlay/AirPlay.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = AirPlay;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		3CE0B99472576087DD6A4514E5B338BD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F888D59E20FF1BE293DD30CD0A5E2441 /* AirPlay.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/AirPlay/AirPlay-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/AirPlay/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/AirPlay/AirPlay.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = AirPlay;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		5E13EEC7B202E63077C4A37B1F092193 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 54B2D49A3D7BE6A102C50DF0AE66D968 /* Pods-AirPlay_Example.release.xcconfig */;
@@ -526,6 +503,33 @@
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_NAME = Pods_AirPlay_Example;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		74AE0E4E01F81E1485ED11949D907FD0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F888D59E20FF1BE293DD30CD0A5E2441 /* AirPlay.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/AirPlay/AirPlay-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/AirPlay/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/AirPlay/AirPlay.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = AirPlay;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -659,11 +663,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8C430251F59F5125A376DA6FE838EF7D /* Build configuration list for PBXNativeTarget "AirPlay" */ = {
+		93C825C8A6CD314A1003801A0C30D0E5 /* Build configuration list for PBXNativeTarget "AirPlay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3CE0B99472576087DD6A4514E5B338BD /* Debug */,
-				342A42B349361F78EF61AB825386A0D4 /* Release */,
+				120F5F590575C5E1644FF04342AC2D4D /* Debug */,
+				74AE0E4E01F81E1485ED11949D907FD0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

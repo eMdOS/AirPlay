@@ -8,9 +8,13 @@
 
 import Foundation
 import MediaPlayer
+import AVFoundation
 
 /// Notification sent everytime AirPlay availability changes.
 public let AirPlayAvailabilityChangedNotification = "AirPlayAvailabilityChangedNotification"
+
+/// Notification sent everytime AirPlay connection route changes.
+public let AirPlayRouteStatusChangedNotification = "AirPlayRouteChangedNotification"
 
 final public class AirPlay: NSObject {
     
@@ -26,6 +30,13 @@ final public class AirPlay: NSObject {
     /// Returns true | false if AirPlay availability is being monitored or not.
     private var isBeingMonitored = false
     
+    /// Returns Device's name if connected, if not, it return 'nil'.
+    private var connectedDevice: String? {
+        didSet {
+            postCurrentRouteChangedNotification()
+        }
+    }
+    
     // MARK: Singleton
     
     /// Singleton
@@ -39,7 +50,7 @@ final public class AirPlay: NSObject {
     
     // MARK: Methods
     
-    final private func _startMonitoring() {
+    final private func start() {
         guard let delegate = UIApplication.sharedApplication().delegate, _window = delegate.window else { return }
         window = _window
         
@@ -52,11 +63,23 @@ final public class AirPlay: NSObject {
                 isBeingMonitored = true
             }
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "audioRouteHasChangedNotification:", name: AVAudioSessionRouteChangeNotification, object: AVAudioSession.sharedInstance())
     }
     
-    final private func _stopMonitoring() {
+    final private func stop() {
         airplayButton?.removeObserver(self, forKeyPath: AirPlayKVOButtonAlphaKey)
         isBeingMonitored = false
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: AVAudioSessionRouteChangeNotification, object: AVAudioSession.sharedInstance())
+    }
+    
+    final private func getConnectedDevice() -> String? {
+        return AVAudioSession.sharedInstance().currentRoute.outputs.filter { $0.portType == AVAudioSessionPortAirPlay }.first?.portName
+    }
+    
+    @objc private func audioRouteHasChangedNotification(notification: NSNotification) {
+        connectedDevice = getConnectedDevice()
     }
     
 }
@@ -67,36 +90,44 @@ private let AirPlayKVOButtonAlphaKey = "alpha"
 
 extension AirPlay {
     final override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        guard let object = object else { return }
-        guard object is UIButton else { return }
-        
-        var newAvailabilityStatus: Bool
-        
-        if let newAvailabilityStatusAsNumber = change?[NSKeyValueChangeNewKey] as? NSNumber {
-            newAvailabilityStatus = newAvailabilityStatusAsNumber.floatValue == 1
-        } else {
-            newAvailabilityStatus = false
-        }
-        
-        if isPossible != newAvailabilityStatus {
+        if keyPath == AirPlayKVOButtonAlphaKey {
+            guard let object = object else { return }
+            guard object is UIButton else { return }
+            
+            var newAvailabilityStatus: Bool
+            
+            if let newAvailabilityStatusAsNumber = change?[NSKeyValueChangeNewKey] as? NSNumber {
+                newAvailabilityStatus = newAvailabilityStatusAsNumber.floatValue == 1
+            } else {
+                newAvailabilityStatus = false
+            }
+            
+            if isPossible != newAvailabilityStatus {
+                isPossible = newAvailabilityStatus
+                postAvailabilityChangedNotification()
+            }
+            
             isPossible = newAvailabilityStatus
-            postAvailabilityChangeNotification()
         }
-        
-        isPossible = newAvailabilityStatus
     }
 }
 
 // MARK: - Notifications
 extension AirPlay {
-    private func postAvailabilityChangeNotification() {
+    private func postAvailabilityChangedNotification() {
         dispatch_async(dispatch_get_main_queue()) {
             NSNotificationCenter.defaultCenter().postNotificationName(AirPlayAvailabilityChangedNotification, object: self)
         }
     }
+    
+    private func postCurrentRouteChangedNotification() {
+        dispatch_async(dispatch_get_main_queue()) {
+            NSNotificationCenter.defaultCenter().postNotificationName(AirPlayRouteStatusChangedNotification, object: self)
+        }
+    }
 }
 
-// MARK: - Availability
+// MARK: - Availability / Connectivity
 extension AirPlay {
     /// Returns `true` or `false` if there are or not available devices for casting via AirPlay. (read-only)
     final public class var isPossible: Bool {
@@ -107,6 +138,16 @@ extension AirPlay {
     final public class var isBeingMonitored: Bool {
         return AirPlay.sharedInstance.isBeingMonitored
     }
+    
+    /// Returns `true` or `false` if device is connected or not to a second device via AirPlay. (read-only)
+    final public class var isConnected: Bool {
+        return AVAudioSession.sharedInstance().currentRoute.outputs.filter { $0.portType == AVAudioSessionPortAirPlay }.count >= 1
+    }
+    
+    /// Returns Device's name if connected, if not, it returns `nil`. (read-only)
+    final public class var connectedDevice: String? {
+        return AirPlay.sharedInstance.connectedDevice
+    }
 }
 
 // MARK: - Monitoring
@@ -115,13 +156,13 @@ extension AirPlay {
      Starts monitoring AirPlay availability changes.
      */
     public static func startMonitoring() {
-        AirPlay.sharedInstance._startMonitoring()
+        AirPlay.sharedInstance.start()
     }
     
     /**
      Stops monitoring AirPlay availability changes.
      */
     public static func stopMonitoring() {
-        AirPlay.sharedInstance._stopMonitoring()
+        AirPlay.sharedInstance.stop()
     }
 }

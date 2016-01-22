@@ -11,6 +11,7 @@ import AirPlay
 
 protocol AirPlayCastable: class {
     func airplayDidChangeAvailability(notification: NSNotification)
+    func airplayCurrentRouteDidChange(notification: NSNotification)
 }
 
 extension AirPlayCastable where Self: UIViewController {
@@ -20,5 +21,13 @@ extension AirPlayCastable where Self: UIViewController {
     
     func unregisterForAirPlayAvailabilityChanges() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: AirPlayAvailabilityChangedNotification, object: nil)
+    }
+    
+    func registerForAirPlayRouteChanges() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "airplayCurrentRouteDidChange:", name: AirPlayRouteStatusChangedNotification, object: nil)
+    }
+    
+    func unregisterForAirPlayRouteChanges() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: AirPlayRouteStatusChangedNotification, object: nil)
     }
 }
