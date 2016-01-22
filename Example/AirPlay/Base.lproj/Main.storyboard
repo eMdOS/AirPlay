@@ -18,19 +18,28 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Possible" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="163-3w-iZT">
-                                <rect key="frame" x="212" y="281" width="178" height="38"/>
+                                <rect key="frame" x="211" y="281" width="178" height="39"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Connected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FBc-Wz-qeP">
+                                <rect key="frame" x="245" y="328" width="111" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="FBc-Wz-qeP" firstAttribute="centerX" secondItem="163-3w-iZT" secondAttribute="centerX" id="0ee-qg-Vwo"/>
+                            <constraint firstItem="FBc-Wz-qeP" firstAttribute="top" secondItem="163-3w-iZT" secondAttribute="bottom" constant="8" id="Dh5-jm-KqO"/>
                             <constraint firstItem="163-3w-iZT" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="cdI-2R-aKS"/>
                             <constraint firstItem="163-3w-iZT" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="q8a-Ma-cft"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="airplayConnectionStatus" destination="FBc-Wz-qeP" id="Lw4-w4-oVi"/>
                         <outlet property="airplayStatus" destination="163-3w-iZT" id="jI4-C1-kGo"/>
                     </connections>
                 </viewController>
