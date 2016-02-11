@@ -18,6 +18,9 @@ public let AirPlayRouteStatusChangedNotification = "AirPlayRouteChangedNotificat
 
 final public class AirPlay: NSObject {
     
+    public typealias AirPlayPossible = (airplay: AirPlay) -> Void
+    public typealias AirPlayConnectionChanged = (airplay: AirPlay) -> Void
+    
     // MARK: Porperties
     
     private var window: UIWindow?
@@ -36,6 +39,10 @@ final public class AirPlay: NSObject {
             postCurrentRouteChangedNotification()
         }
     }
+    
+    private var _whenPossible: AirPlayPossible?
+    private var _whenNotPossible: AirPlayPossible?
+    private var _whenConnectionChanged: AirPlayConnectionChanged?
     
     // MARK: Singleton
     
@@ -64,7 +71,7 @@ final public class AirPlay: NSObject {
             }
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "audioRouteHasChangedNotification:", name: AVAudioSessionRouteChangeNotification, object: AVAudioSession.sharedInstance())
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "audioRouteHasChanged:", name: AVAudioSessionRouteChangeNotification, object: AVAudioSession.sharedInstance())
     }
     
     final private func stop() {
@@ -78,7 +85,7 @@ final public class AirPlay: NSObject {
         return AVAudioSession.sharedInstance().currentRoute.outputs.filter { $0.portType == AVAudioSessionPortAirPlay }.first?.portName
     }
     
-    @objc private func audioRouteHasChangedNotification(notification: NSNotification) {
+    @objc private func audioRouteHasChanged(notification: NSNotification) {
         connectedDevice = getConnectedDevice()
     }
     
@@ -115,14 +122,28 @@ extension AirPlay {
 // MARK: - Notifications
 extension AirPlay {
     private func postAvailabilityChangedNotification() {
-        dispatch_async(dispatch_get_main_queue()) {
+        dispatch_async(dispatch_get_main_queue()) { [unowned self] () -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName(AirPlayAvailabilityChangedNotification, object: self)
+            
+            if self.isPossible {
+                if let whenPossible = self._whenPossible {
+                    whenPossible(airplay: self)
+                }
+            } else {
+                if let whenNotPossible = self._whenNotPossible {
+                    whenNotPossible(airplay: self)
+                }
+            }
         }
     }
     
     private func postCurrentRouteChangedNotification() {
-        dispatch_async(dispatch_get_main_queue()) {
+        dispatch_async(dispatch_get_main_queue()) { [unowned self] () -> Void in
             NSNotificationCenter.defaultCenter().postNotificationName(AirPlayRouteStatusChangedNotification, object: self)
+            
+            if let whenConnectionChanged = self._whenConnectionChanged {
+                whenConnectionChanged(airplay: self)
+            }
         }
     }
 }
@@ -164,5 +185,26 @@ extension AirPlay {
      */
     public static func stopMonitoring() {
         AirPlay.sharedInstance.stop()
+    }
+}
+
+// MARK:- Closures
+extension AirPlay {
+    public static var whenPossible: AirPlayPossible? {
+        didSet {
+            AirPlay.sharedInstance._whenPossible = whenPossible
+        }
+    }
+    
+    public static var whenNotPossible: AirPlayPossible? {
+        didSet {
+            AirPlay.sharedInstance._whenNotPossible = whenNotPossible
+        }
+    }
+    
+    public static var whenConnectionChanged: AirPlayConnectionChanged? {
+        didSet {
+            AirPlay.sharedInstance._whenConnectionChanged = whenConnectionChanged
+        }
     }
 }

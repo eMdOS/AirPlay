@@ -17,8 +17,27 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        registerForAirPlayAvailabilityChanges()
-        registerForAirPlayRouteChanges()
+        airplayStuffs()
+        
+        //registerForAirPlayAvailabilityChanges()
+        //registerForAirPlayRouteChanges()
+    }
+    
+    private func airplayStuffs() {
+        AirPlay.whenPossible = { _ in
+            print("Possible = \(AirPlay.isPossible)")
+            self.updateUI()
+        }
+        
+        AirPlay.whenNotPossible = { _ in
+            print("Not Possible = \(AirPlay.isPossible)")
+            self.updateUI()
+        }
+        
+        AirPlay.whenConnectionChanged = { _ in
+            print("Connection has changed... Connected: \(AirPlay.isConnected)")
+            self.updateUI()
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -31,8 +50,8 @@ class ViewController: UIViewController {
     }
     
     deinit {
-        unregisterForAirPlayAvailabilityChanges()
-        unregisterForAirPlayRouteChanges()
+        //unregisterForAirPlayAvailabilityChanges()
+        //unregisterForAirPlayRouteChanges()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +71,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: AirPlayCastable {
+/*extension ViewController: AirPlayCastable {
     func airplayDidChangeAvailability(notification: NSNotification) {
         updateUI()
     }
@@ -60,4 +79,4 @@ extension ViewController: AirPlayCastable {
     func airplayCurrentRouteDidChange(notification: NSNotification) {
         updateUI()
     }
-}
+}*/
