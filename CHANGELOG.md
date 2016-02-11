@@ -11,6 +11,18 @@ All notable changes to this project will be documented in this file.
 
 - AirPlayButton (UIButton or UIView subclass [not defined yet]).
 
+## [v1.4.0](https://github.com/eMdOS/AirPlay/tree/v1.4.0)
+
+(2016-02-10)
+
+### Added
+
+- Closure syntax to listen availability and connection changes.
+    * `AirPlay.whenPossible`
+    * `AirPlay.whenNotPossible`
+    * `AirPlay.whenConnectionChanged`
+
+
 ## [v1.3.0](https://github.com/eMdOS/AirPlay/tree/v1.3.0)
 
 (2016-01-22)

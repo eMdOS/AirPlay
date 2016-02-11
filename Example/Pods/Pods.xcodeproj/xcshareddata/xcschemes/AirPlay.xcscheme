@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '56E021A7F576B189D8040198'
+               BlueprintIdentifier = 'C1E7B3C5246F3CFA445DFA60'
                BlueprintName = 'AirPlay'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'AirPlay.framework'>

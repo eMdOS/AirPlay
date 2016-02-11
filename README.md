@@ -27,18 +27,39 @@ Currently, this library is a kind of workaround to be able to track **AirPlay av
 
 ## Usage
 
-### Notifications, Properties, Methods
+### Notifications, Properties, Methods, Closures
 
-Notification / Property / Method | Description |
---- | --- |
+#### Notifications
+
+Notification | Description |
+--: | :-- |
 `AirPlayAvailabilityChangedNotification` | Notification sent everytime AirPlay availability changes. |
 `AirPlayRouteStatusChangedNotification` | Notification sent everytime AirPlay connection route changes. |
+
+#### Porperties
+
+Property | Description |
+--: | :-- |
 `isPossible` | Returns `true` or `false` if there are or not available devices for casting via AirPlay. (read-only) |
 `isBeingMonitored` | Returns `true` or `false` if AirPlay availability is being monitored or not. (read-only) |
 `isConnected` | Returns `true` or `false` if device is connected or not to a second device via AirPlay. (read-only) |
 `connectedDevice` | Returns Device's name if connected, if not, it returns `nil`. (read-only) |
+
+#### Methods
+
+Method | Description |
+--: | :-- |
 `startMonitoring()` | Starts monitoring AirPlay availability changes |
 `stopMonitoring()` | Stops monitoring AirPlay availability changes |
+
+
+#### Closures
+
+Closure | Description |
+--: | :-- |
+`whenPossible` | Block of code to execute when AirPlay is possible |
+`whenNotPossible` | Block of code to execute when AirPlay is not possible |
+`whenConnectionChanged` | Block of code to execute when AirPlay connects/disconnects |
 
 
 ### Start Monitoring
@@ -71,6 +92,32 @@ NSNotificationCenter.defaultCenter().removeObserver(self, name: AirPlayAvailabil
 NSNotificationCenter.defaultCenter().removeObserver(self, name: AirPlayRouteStatusChangedNotification, object: nil)
 ```
 
+### Using closures
+
+When possible:
+
+```swift
+AirPlay.whenPossible = { _ in
+    <code>
+}
+```
+
+When not possible:
+
+```swift
+AirPlay.whenNotPossible = { _ in
+    <code>
+}
+```
+
+When connection changed:
+
+```swift
+AirPlay.whenConnectionChanged = { _ in
+    <code>
+}
+```
+
 ### Displaying `AirPlay` availability status
 
 `AirPlay.isPossible` will return `true` or `false`.
@@ -82,6 +129,8 @@ NSNotificationCenter.defaultCenter().removeObserver(self, name: AirPlayRouteStat
 ### Displaying connected device name
 
 `AirPlay.connectedDevice ?? "Unknown Device"`
+
+## Examples
 
 ### Example using Protocol Extensions and Constraints
 
@@ -142,6 +191,11 @@ deinit {
 **Updating UI:**
 
 ```swift
+override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    updateUI()
+}
+
 private func updateUI() {
     airplayStatus.text = AirPlay.isPossible ? "Possible" : "Not Possible"
     if AirPlay.isConnected {
@@ -163,6 +217,53 @@ extension Player: AirPlayCastable {
 
     func airplayCurrentRouteDidChange(notification: NSNotification) {
         updateUI()
+    }
+}
+```
+
+### Example using closures
+
+**Setting-up closures:**
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    airplayStuffs()
+}
+
+private func airplayStuffs() {
+    AirPlay.whenPossible = { _ in
+        print("Possible = \(AirPlay.isPossible)")
+        self.updateUI()
+    }
+
+    AirPlay.whenNotPossible = { _ in
+        print("Not Possible = \(AirPlay.isPossible)")
+        self.updateUI()
+    }
+
+    AirPlay.whenConnectionChanged = { _ in
+        print("Connection has changed... Connected: \(AirPlay.isConnected)")
+        self.updateUI()
+    }
+}
+```
+
+**Updating UI:**
+
+```swift
+override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    updateUI()
+}
+
+private func updateUI() {
+    airplayStatus.text = AirPlay.isPossible ? "Possible" : "Not Possible"
+    if AirPlay.isConnected {
+        let device = AirPlay.connectedDevice ?? "Unknown Device"
+        airplayConnectionStatus.text = "Connected to: \(device)"
+    } else {
+        airplayConnectionStatus.text = "Not Connected"
     }
 }
 ```
