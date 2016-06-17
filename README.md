@@ -21,7 +21,7 @@ AirPlay lets users track iOS AirPlay availability and provides extra information
 
 ![iOSSupport](https://img.shields.io/badge/iOS-8.0+-8e8e93.svg)
 
-Currently, this library is a kind of workaround to be able to track **AirPlay availability** observing changes on [`MPVolumeView`](https://developer.apple.com/library/ios/documentation/MediaPlayer/Reference/MPVolumeView_Class/). So, it needs to be tested every new iOS realease.
+Currently, this library is a kind of workaround to be able to track **AirPlay availability** observing changes on [`MPVolumeView`](https://developer.apple.com/library/ios/documentation/MediaPlayer/Reference/MPVolumeView_Class/). So, it needs to be tested every new iOS release.
 
 > If there is an Apple TV or other AirPlay-enabled device in range, the route button allows the user to choose it. If there is only one audio output route available, the route button is not displayed.
 
@@ -36,7 +36,7 @@ Notification | Description |
 `AirPlayAvailabilityChangedNotification` | Notification sent everytime AirPlay availability changes. |
 `AirPlayRouteStatusChangedNotification` | Notification sent everytime AirPlay connection route changes. |
 
-#### Porperties
+#### Properties
 
 Property | Description |
 --: | :-- |
