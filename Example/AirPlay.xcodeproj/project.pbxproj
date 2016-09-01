@@ -15,7 +15,6 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		7AF93B1CA475C09ED25F9151 /* Pods_AirPlay_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01025BA83E035857F2CE9E9A /* Pods_AirPlay_Example.framework */; };
-		AF03AB001C52EFA0006737ED /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = AF03AAFF1C52EFA0006737ED /* CHANGELOG.md */; };
 		AF052F2B1C46A673007767F8 /* AirPlayCastable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF052F2A1C46A673007767F8 /* AirPlayCastable.swift */; };
 /* End PBXBuildFile section */
 
@@ -368,7 +367,6 @@
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				AF052F2B1C46A673007767F8 /* AirPlayCastable.swift in Sources */,
-				AF03AB001C52EFA0006737ED /* CHANGELOG.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
