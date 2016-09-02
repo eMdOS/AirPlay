@@ -71,7 +71,7 @@ final public class AirPlay: NSObject {
             }
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "audioRouteHasChanged:", name: AVAudioSessionRouteChangeNotification, object: AVAudioSession.sharedInstance())
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AirPlay.audioRouteHasChanged(_:)), name: AVAudioSessionRouteChangeNotification, object: AVAudioSession.sharedInstance())
     }
     
     final private func stop() {
