@@ -10,46 +10,49 @@ import Foundation
 import MediaPlayer
 import AVFoundation
 
-/// Notification sent everytime AirPlay availability changes.
-public let AirPlayAvailabilityChangedNotification = "AirPlayAvailabilityChangedNotification"
+public extension Notification.Name {
 
-/// Notification sent everytime AirPlay connection route changes.
-public let AirPlayRouteStatusChangedNotification = "AirPlayRouteChangedNotification"
+    /// Notification sent everytime AirPlay availability changes.
+    static let airplayAvailabilityChangedNotification = Notification.Name("AirPlayAvailabilityChangedNotification")
+
+    /// Notification sent everytime AirPlay connection route changes.
+    static let airplayRouteStatusChangedNotification = Notification.Name("AirPlayRouteChangedNotification")
+}
 
 final public class AirPlay: NSObject {
     
-    public typealias AirPlayPossible = (airplay: AirPlay) -> Void
-    public typealias AirPlayConnectionChanged = (airplay: AirPlay) -> Void
+    public typealias AirPlayPossible = (_ airplay: AirPlay) -> Void
+    public typealias AirPlayConnectionChanged = (_ airplay: AirPlay) -> Void
     
     // MARK: Porperties
     
-    private var window: UIWindow?
-    private let volumeView: MPVolumeView!
-    private var airplayButton: UIButton?
+    fileprivate var window: UIWindow?
+    fileprivate let volumeView: MPVolumeView!
+    fileprivate var airplayButton: UIButton?
     
     /// Returns true | false if there are or not available devices for casting via AirPlay.
-    private var isPossible = false
+    fileprivate var isPossible = false
     
     /// Returns true | false if AirPlay availability is being monitored or not.
-    private var isBeingMonitored = false
+    fileprivate var isBeingMonitored = false
     
     /// Returns Device's name if connected, if not, it return 'nil'.
-    private var connectedDevice: String? {
+    fileprivate var connectedDevice: String? {
         didSet {
             postCurrentRouteChangedNotification()
         }
     }
     
-    private var _whenPossible: AirPlayPossible?
-    private var _whenNotPossible: AirPlayPossible?
-    private var _whenConnectionChanged: AirPlayConnectionChanged?
+    fileprivate var _whenPossible: AirPlayPossible?
+    fileprivate var _whenNotPossible: AirPlayPossible?
+    fileprivate var _whenConnectionChanged: AirPlayConnectionChanged?
     
     // MARK: Singleton
     
     /// Singleton
-    private static let sharedInstance = AirPlay()
+    fileprivate static let sharedInstance = AirPlay()
     /// Private Initializer (because of Singleton pattern)
-    private override init() {
+    fileprivate override init() {
         volumeView = MPVolumeView(frame: CGRect(x: -1000, y: -1000, width: 1, height: 1))
         volumeView.showsVolumeSlider = false
         volumeView.showsRouteButton = true
@@ -57,35 +60,35 @@ final public class AirPlay: NSObject {
     
     // MARK: Methods
     
-    final private func start() {
-        guard let delegate = UIApplication.sharedApplication().delegate, _window = delegate.window else { return }
+    final fileprivate func start() {
+        guard let delegate = UIApplication.shared.delegate, let _window = delegate.window else { return }
         window = _window
         
         window?.addSubview(volumeView)
         for view in volumeView.subviews {
             if view is UIButton {
                 airplayButton = view as? UIButton
-                airplayButton?.addObserver(self, forKeyPath: AirPlayKVOButtonAlphaKey, options: [.Initial, .New], context: nil)
+                airplayButton?.addObserver(self, forKeyPath: AirPlayKVOButtonAlphaKey, options: [.initial, .new], context: nil)
                 
                 isBeingMonitored = true
             }
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "audioRouteHasChanged:", name: AVAudioSessionRouteChangeNotification, object: AVAudioSession.sharedInstance())
+        NotificationCenter.default.addObserver(self, selector: #selector(AirPlay.audioRouteHasChanged(_:)), name: NSNotification.Name.AVAudioSessionRouteChange, object: AVAudioSession.sharedInstance())
     }
     
-    final private func stop() {
+    final fileprivate func stop() {
         airplayButton?.removeObserver(self, forKeyPath: AirPlayKVOButtonAlphaKey)
         isBeingMonitored = false
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: AVAudioSessionRouteChangeNotification, object: AVAudioSession.sharedInstance())
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVAudioSessionRouteChange, object: AVAudioSession.sharedInstance())
     }
     
-    final private func getConnectedDevice() -> String? {
+    final fileprivate func getConnectedDevice() -> String? {
         return AVAudioSession.sharedInstance().currentRoute.outputs.filter { $0.portType == AVAudioSessionPortAirPlay }.first?.portName
     }
     
-    @objc private func audioRouteHasChanged(notification: NSNotification) {
+    @objc fileprivate func audioRouteHasChanged(_ notification: Notification) {
         connectedDevice = getConnectedDevice()
     }
     
@@ -96,24 +99,24 @@ final public class AirPlay: NSObject {
 private let AirPlayKVOButtonAlphaKey = "alpha"
 
 extension AirPlay {
-    final override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    final override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == AirPlayKVOButtonAlphaKey {
             guard let object = object else { return }
             guard object is UIButton else { return }
-            
+
             var newAvailabilityStatus: Bool
-            
-            if let newAvailabilityStatusAsNumber = change?[NSKeyValueChangeNewKey] as? NSNumber {
+
+            if let newAvailabilityStatusAsNumber = change?[NSKeyValueChangeKey.newKey] as? NSNumber {
                 newAvailabilityStatus = newAvailabilityStatusAsNumber.floatValue == 1
             } else {
                 newAvailabilityStatus = false
             }
-            
+
             if isPossible != newAvailabilityStatus {
                 isPossible = newAvailabilityStatus
                 postAvailabilityChangedNotification()
             }
-            
+
             isPossible = newAvailabilityStatus
         }
     }
@@ -121,28 +124,28 @@ extension AirPlay {
 
 // MARK: - Notifications
 extension AirPlay {
-    private func postAvailabilityChangedNotification() {
-        dispatch_async(dispatch_get_main_queue()) { [unowned self] () -> Void in
-            NSNotificationCenter.defaultCenter().postNotificationName(AirPlayAvailabilityChangedNotification, object: self)
+    fileprivate func postAvailabilityChangedNotification() {
+        DispatchQueue.main.async { [unowned self] () -> Void in
+            NotificationCenter.default.post(name: .airplayAvailabilityChangedNotification, object: self)
             
             if self.isPossible {
                 if let whenPossible = self._whenPossible {
-                    whenPossible(airplay: self)
+                    whenPossible(self)
                 }
             } else {
                 if let whenNotPossible = self._whenNotPossible {
-                    whenNotPossible(airplay: self)
+                    whenNotPossible(self)
                 }
             }
         }
     }
     
-    private func postCurrentRouteChangedNotification() {
-        dispatch_async(dispatch_get_main_queue()) { [unowned self] () -> Void in
-            NSNotificationCenter.defaultCenter().postNotificationName(AirPlayRouteStatusChangedNotification, object: self)
+    fileprivate func postCurrentRouteChangedNotification() {
+        DispatchQueue.main.async { [unowned self] () -> Void in
+            NotificationCenter.default.post(name: .airplayRouteStatusChangedNotification, object: self)
             
             if let whenConnectionChanged = self._whenConnectionChanged {
-                whenConnectionChanged(airplay: self)
+                whenConnectionChanged(self)
             }
         }
     }
