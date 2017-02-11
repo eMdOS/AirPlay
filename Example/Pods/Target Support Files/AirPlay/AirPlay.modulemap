@@ -1,6 +1,0 @@
-framework module AirPlay {
-  umbrella header "AirPlay-umbrella.h"
-
-  export *
-  module * { export * }
-}
