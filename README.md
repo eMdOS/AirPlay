@@ -10,7 +10,7 @@ AirPlay lets users track iOS AirPlay availability and provides extra information
 ## Development Environment
 
 + Xcode 8.2.1 (8C1002)
-+ iOS 8+
++ Swift 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)
 + CocoaPods 1.2.0
 
 ## Support
@@ -178,6 +178,23 @@ Then, run the following command:
 ```
 $ pod install
 ```
+
+### Carthage
+
+Carthage is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks. You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```
+$ brew update
+$ brew install carthage
+```
+
+To integrate **AirPlay** into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```
+github "eMdOS/AirPlay" ~> 3.0.0
+```
+
+Run `carthage update` to build the framework and drag the built `AirPlay.framework` into your Xcode project.
 
 ## Migration from v1.+ to v3.+
 
