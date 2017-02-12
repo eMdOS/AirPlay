@@ -3,13 +3,40 @@
 All notable changes to this project will be documented in this file.
 **AirPlay** adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## [v3.0.0](https://github.com/eMdOS/AirPlay/tree/v3.0.0)
 
-### To Add
+(2017-02-11)
 
-- AirPlay image assets with the proper dimensions (@1x, @2x, @3x).
+*I skipped version 2 just to match with the swift language version.*
 
-- AirPlayButton (UIButton or UIView subclass [not defined yet]).
+### Changed
+
++ Notifications naming.
+	- `.airplayAvailabilityChangedNotification`
+	
+		... was `AirPlayAvailabilityChangedNotification`.
+	- `.airplayRouteStatusChangedNotification`
+
+		... was `AirPlayRouteStatusChangedNotification`.
+
++ Properties naming.
+	- `AirPlay.isAvailable`
+
+		... was `AirPlay.isPossible`.
+
++ Closures naming.
+
+	- `AirPlay.whenAvailable`
+
+		... was `AirPlay.whenPossible`.
+	
+	- `AirPlay.whenUnavailable`
+
+		... was `AirPlay. whenNotPossible`.
+	
+	- `AirPlay.whenRouteChanged`
+
+		... was `AirPlay.whenConnectionChanged`.
 
 ## [v1.4.0](https://github.com/eMdOS/AirPlay/tree/v1.4.0)
 
