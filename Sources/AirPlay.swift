@@ -103,7 +103,7 @@ final public class AirPlay: NSObject {
         )
 
         isBeingMonitored = false
-
+        isAvailable = false
         NotificationCenter.default.removeObserver(
             self,
             name: .AVAudioSessionRouteChange,
