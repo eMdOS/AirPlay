@@ -9,9 +9,10 @@ AirPlay lets users track iOS AirPlay availability and provides extra information
 
 ## Development Environment
 
-+ Xcode 8.2.1 (8C1002)
-+ Swift 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)
-+ CocoaPods 1.2.0
++ Xcode 9.0 GM (9A235)
++ Swift 4.0 (swiftlang-900.0.65 clang-900.0.37)
++ Carthage 0.25.0
++ CocoaPods 1.3.1
 
 ## Support
 
