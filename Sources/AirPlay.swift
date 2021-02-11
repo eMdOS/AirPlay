@@ -12,10 +12,10 @@ import AVFoundation
 
 public extension Notification.Name {
     /// Notification sent everytime AirPlay availability changes.
-    public static let airplayAvailabilityChangedNotification = Notification.Name("AirPlayAvailabilityChangedNotification")
+	static let airplayAvailabilityChangedNotification = Notification.Name("AirPlayAvailabilityChangedNotification")
 
     /// Notification sent everytime AirPlay connection route changes.
-    public static let airplayRouteStatusChangedNotification = Notification.Name("AirPlayRouteChangedNotification")
+	static let airplayRouteStatusChangedNotification = Notification.Name("AirPlayRouteChangedNotification")
 }
 
 final public class AirPlay: NSObject {
@@ -91,7 +91,7 @@ final public class AirPlay: NSObject {
         NotificationCenter.default.addObserver(
             self,
             selector: .audioRouteHasChanged,
-            name: .AVAudioSessionRouteChange,
+			name: AVAudioSession.routeChangeNotification,
             object: AVAudioSession.sharedInstance()
         )
     }
@@ -106,14 +106,14 @@ final public class AirPlay: NSObject {
         isAvailable = false
         NotificationCenter.default.removeObserver(
             self,
-            name: .AVAudioSessionRouteChange,
+            name: AVAudioSession.routeChangeNotification,
             object: AVAudioSession.sharedInstance()
         )
     }
 
     fileprivate func getConnectedDevice() -> String? {
         return AVAudioSession.sharedInstance().currentRoute.outputs.filter {
-            $0.portType == AVAudioSessionPortAirPlay
+			$0.portType == AVAudioSession.Port.airPlay
         }.first?.portName
     }
 
@@ -194,7 +194,7 @@ extension AirPlay {
     /// Returns `true` or `false` if device is connected or not to a second device via AirPlay. (read-only)
     public static var isConnected: Bool {
         return AVAudioSession.sharedInstance().currentRoute.outputs.filter {
-            $0.portType == AVAudioSessionPortAirPlay
+			$0.portType == AVAudioSession.Port.airPlay
         }.count >= 1
     }
 
